@@ -1,0 +1,4 @@
+"./Src/Helpers/logger.o"
+"./Src/SystemInit.o"
+"./Src/main.o"
+"./Startup/startup_stm32f407vgtx.o"
