@@ -66,7 +66,32 @@ static void configure_clock(void)
 	CLEAR_BIT(RCC->CR, RCC_CR_HSION);
 }
 
+void configure_mco1()
+{
+	//Configures PPRE1 i.e APB1 pre-scalar
+	MODIFY_REG(RCC->CFGR,
+			RCC_CFGR_MCO1 | RCC_CFGR_MCO1PRE,
+			_VAL2FLD(RCC_CFGR_MCO1, 3) | _VAL2FLD(RCC_CFGR_MCO1PRE, 16) // selecting PLL as clock source and setting pre-scalar value of 4
+			);
+
+	//ENABLES PORTA Clock
+	SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOAEN);
+
+	//Configure PA8 OUTPUT SPEED
+	MODIFY_REG(GPIOA->OSPEEDR,
+			GPIO_OSPEEDR_OSPEED8,
+			_VAL2FLD(GPIO_OSPEEDR_OSPEED8, 1) // selecting output speed to medium speed (1)
+			);
+	//Configure PA8 MODE
+	MODIFY_REG(GPIOA->MODER,
+			GPIO_MODER_MODE8,
+			_VAL2FLD(GPIO_MODER_MODE8, 2) // selecting output speed to medium speed(1)
+			);
+
+}
+
 void SystemInit(void)
 {
+	configure_mco1();
 	configure_clock();
 }
