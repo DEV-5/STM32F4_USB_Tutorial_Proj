@@ -60,8 +60,8 @@ all: main-build
 main-build: usb_behind_the_scenes_stm32f407_disc1_tutorial.elf secondary-outputs
 
 # Tool invocations
-usb_behind_the_scenes_stm32f407_disc1_tutorial.elf usb_behind_the_scenes_stm32f407_disc1_tutorial.map: $(OBJS) $(USER_OBJS) /home/vdev/STM32CubeIDE/workspace_1.16.1/usb_behind_the_scenes_stm32f407_disc1_tutorial/STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "usb_behind_the_scenes_stm32f407_disc1_tutorial.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/vdev/STM32CubeIDE/workspace_1.16.1/usb_behind_the_scenes_stm32f407_disc1_tutorial/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="usb_behind_the_scenes_stm32f407_disc1_tutorial.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+usb_behind_the_scenes_stm32f407_disc1_tutorial.elf usb_behind_the_scenes_stm32f407_disc1_tutorial.map: $(OBJS) $(USER_OBJS) /home/vdev/STM32CubeIDE/workspace_1.16.1/STM32F4_USB_Tutorial_Proj/usb_behind_the_scenes_stm32f407_disc1_tutorial/STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "usb_behind_the_scenes_stm32f407_disc1_tutorial.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/vdev/STM32CubeIDE/workspace_1.16.1/STM32F4_USB_Tutorial_Proj/usb_behind_the_scenes_stm32f407_disc1_tutorial/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="usb_behind_the_scenes_stm32f407_disc1_tutorial.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
