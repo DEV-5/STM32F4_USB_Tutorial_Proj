@@ -92,6 +92,6 @@ void configure_mco1()
 
 void SystemInit(void)
 {
-	configure_mco1();
+	//	configure_mco1();
 	configure_clock();
 }
